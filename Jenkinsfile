@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage ('Print Version') {
             steps {
-                sh 'node -v'
-                sh 'npm -v'
+                powershell 'node -v'
+                powershell 'npm -v'
             }
         }
     }
