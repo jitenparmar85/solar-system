@@ -2,10 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage ('Print Version') {
+        stage ('Install Dependancies') {
             steps {
-                powershell 'node -v'
-                powershell 'npm -v'
+                echo "Install Dependencies from package.json"
+                powershell 'npm install --no-audit'
             }
         }
     }
