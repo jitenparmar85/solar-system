@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage ('Print Version') {
             steps {
-                bash 'node -v'
-                bash 'npm -v'
+                sh 'node -v'
+                sh 'npm -v'
             }
         }
     }
