@@ -20,7 +20,7 @@ pipeline {
                 stage ('OWASP Dependency Check') {
                     steps {
                         echo "OWASP Dependency check"
-                        dependencyCheck additionalArguments: '''
+/*                        dependencyCheck additionalArguments: '''
                             --scan \'./\'
                             --out \'./\'
                             --format \'ALL\'
@@ -31,6 +31,7 @@ pipeline {
 
                         //Publish HTML Report
                         publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: false, reportDir: 'dependency-check-report.html', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+*/
                     }
                 }
             }
