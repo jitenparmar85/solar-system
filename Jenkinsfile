@@ -37,7 +37,9 @@ pipeline {
         }
         stage ('Unit Testing') {
             steps {
-                powershell 'npm test'
+                withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
+                    powershell 'npm test'
+                }
             }
         }
     }
