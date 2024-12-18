@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        MONGO_URI = "mongodb+srv//supercluster.d83jj.mongodb.net/superData"
+    }
     stages {
         stage ('Install Dependencies') {
             steps {
