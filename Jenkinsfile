@@ -40,8 +40,15 @@ pipeline {
         }
         stage ('Unit Testing') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
+/*                withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
                     powershell 'npm test'
+                }
+*/            }
+        }
+        stage ('Code Coverage') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
+                    powershell 'npm run coverage'
                 }
             }
         }
