@@ -24,7 +24,7 @@ pipeline {
                             --scan \'./\'
                             --out \'./\'
                             --format \'ALL\'
-                            --prettyPrint''', odcInstallation: 'OWASP-DepCheck-11'
+                            --prettyPrint''',  nvdCredentialsId: 'NVD-API-Key', odcInstallation: 'OWASP-DepCheck-11'
 
                         //Fail if critical dependency found
                         dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: true
@@ -33,6 +33,11 @@ pipeline {
                         publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: false, reportDir: 'dependency-check-report.html', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
                     }
                 }
+            }
+        }
+        stage ('Unit Testing') {
+            steps {
+                powershell 'npm test'
             }
         }
     }
