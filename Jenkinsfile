@@ -69,7 +69,6 @@ pipeline {
                         -Dsonar.host.url=http://localhost:9000 \
                         -Dsonar.login=sqp_3adefbe51facae9c8bb00876734bf5d7f74e5b59
                     '''
-                }
             }
         }
     }
