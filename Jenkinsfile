@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         MONGO_URI = "mongodb+srv://supercluster.d83jj.mongodb.net/superData"
+        SONAR_SCANNER_HOME = tool 'sonarqube-scanner-621'
     }
     stages {
         stage ('Install Dependencies') {
@@ -43,12 +44,23 @@ pipeline {
 /*                withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
                     powershell 'npm test'
                 }
-*/            }
+*/          
+                    echo "Unit Teting"
+            }
         }
         stage ('Code Coverage') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
                     powershell 'npm run coverage'
+                }
+            }
+        }
+        stage ('SAST - SonarQube') {
+            steps {
+                    sonar-scanner.bat -D"sonar.projectKey=Solar-System-Project"
+                    -D"sonar.sources=app.js"
+                    -D"sonar.host.url=http://localhost:9000"
+                    -D"sonar.login=sqp_3adefbe51facae9c8bb00876734bf5d7f74e5b59"
                 }
             }
         }
