@@ -64,7 +64,7 @@ pipeline {
                     // -D"sonar.login=sqp_3adefbe51facae9c8bb00876734bf5d7f74e5b59"
 
                     powershell '''
-                    $SONAR_SCANNER_HOME/bin/sonar-scanner \
+                    sonar-scanner \
                         -Dsonar.projectKey=Solar-System-Project \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=http://localhost:9000 \
