@@ -58,10 +58,10 @@ pipeline {
         }
         stage ('SAST - SonarQube') {
             steps {
-                    sonar-scanner.bat -Dsonar.projectKey=Solar-System-Project
-                    -Dsonar.sources=app.js
+                    sonar-scanner.bat -Dsonar.projectKey="Solar-System-Project"
+                    -Dsonar.sources="app.js"
                     -Dsonar.host.url="http://localhost:9000"
-                    -Dsonar.login=sqp_3adefbe51facae9c8bb00876734bf5d7f74e5b59
+                    -Dsonar.login="sqp_3adefbe51facae9c8bb00876734bf5d7f74e5b59"
 
                     // powershell '''
                     // sonar-scanner \
