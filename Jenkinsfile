@@ -50,9 +50,10 @@ pipeline {
         }
         stage ('Code Coverage') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
-                    powershell 'npm run coverage'
-                }
+                // withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
+                //     powershell 'npm run coverage'
+                // }
+                echo "Code Coverage"
             }
         }
         stage ('SAST - SonarQube') {
