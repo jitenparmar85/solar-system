@@ -58,7 +58,7 @@ pipeline {
         }
         stage ('SAST - SonarQube') {
             steps {
-                    powershell 'C:/sonar-scanner-6.2.1.4610-windows-x64/bin/sonar-scanner -D"sonar.projectKey=Solar-System-Project" -D"sonar.sources=app.js" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=sqp_3adefbe51facae9c8bb00876734bf5d7f74e5b59"'
+                    powershell 'C:/sonar-scanner-6.2.1.4610-windows-x64/bin/sonar-scanner -D"sonar.projectKey=Solar-System-Project" -D"sonar.sources=app.js" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=sqp_3adefbe51facae9c8bb00876734bf5d7f74e5b59" -D"sonar.javascript.lcov.reportPaths=./coverage/lcov.info"'
 
                     // powershell '''
                     // sonar-scanner -Dsonar.projectKey=Solar-System-Project
